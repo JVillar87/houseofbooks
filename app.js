@@ -14,20 +14,23 @@ async function getBooks() {
 
 async function addBook(book) {
   // COMPLETE CODE
-  await fetch("addBook.php", {
+  const res = await fetch("addBook.php", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(book)
   });
+
+  return await res.json();
 }
 
 async function editBook(book) {
   // CODE HERE
-  await fetch("editBook.php", {
+  const res = await fetch("editBook.php", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(book)
   });
+  return await res.json();
 }
 
 async function deleteBook(id) {
@@ -39,7 +42,6 @@ async function deleteBook(id) {
     method: "POST",
     body: payload
   });
-
   getBooks();
 }
 
@@ -80,8 +82,16 @@ async function saveBook() {
     year: year.value
   };
 
-  if (book.id) await editBook(book);
-  else await addBook(book);
+  if (book.id) {
+    await editBook(book);
+  } else {
+    await addBook(book);
+  }
+
+  bookId.value = "";
+  title.value = "";
+  author.value = "";
+  year.value = "";
 
   getBooks();
 }
