@@ -67,7 +67,6 @@ function populateCards(books) {
 }
 
 function fillForm(book) {
-  // showForm();
   bookId.value = book.id;
   title.value = book.title;
   author.value = book.author;

@@ -2,7 +2,7 @@
 // CODE HERE
 $data = json_decode(file_get_contents("php://input"), true);
 // COMPLETE CODE
-$conn = new mysqli("localhost", "root", "", "books");
+$conn = new mysqli("localhost", "root", "", "books_db");
 if ($conn->connect_error) {
     echo json_encode(["status" => "KO"]);
     exit();
