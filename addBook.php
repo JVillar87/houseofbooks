@@ -8,14 +8,14 @@ if ($conn->connect_error) {
     exit();
 }
 
-if ($data) {
+if (!$data) {
     echo json_encode(["status" => "KO"]);
     exit();
 }
 
 $title = $data['title'];
 $author = $data['author'];
-$year = (int)$data['year']; //Convertimos a números
+$year = $data['year']; 
 
 $sql = "INSERT INTO books (title, author, year) 
 VALUES ('$title', '$author', $year)";
@@ -26,4 +26,3 @@ if ($conn->query($sql) === TRUE) {
     echo json_encode(["status" => "KO"]);
 }
 $conn->close();
-?>

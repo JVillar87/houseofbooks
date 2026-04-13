@@ -1,5 +1,6 @@
 <?php
-// CODE HERE
+//CODE HERE
+$conn = new mysqli("localhost", "root", "", "books_db");
 if ($conn->connect_error) {
     echo json_encode(["status" => "KO"]);
     exit();
